@@ -8,7 +8,6 @@ class Avo::Resources::Track < Avo::BaseResource
 
   def fields
     field :id, as: :id
-    field :artist_id, only_on: :index, as: :number
     field :title, as: :text
     field :artist, as: :belongs_to
     field :playlist_tracks, as: :has_many
