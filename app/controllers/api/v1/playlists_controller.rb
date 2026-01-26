@@ -1,10 +1,5 @@
-module Api
-  module V1
-    class PlaylistsController < ApiController
-      RESPONSE =
-      def index
-        render json: API_RESPONSE
-      end
-    end
+class Api::V1::PlaylistsController < ApiController
+  def index
+    render json: Api::V1::Playlists::ResponsePresenter.new(playlists: Playlist.all).response
   end
 end
