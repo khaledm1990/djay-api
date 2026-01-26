@@ -11,6 +11,21 @@ FileUtils.chdir APP_ROOT do
   # This script is a way to set up or update your development environment automatically.
   # This script is idempotent, so that you can run it at any time and get an expectable outcome.
   # Add necessary setup steps to this file.
+  # 
+  puts "== Checking for ffmpeg ==" # ffmpeg is required for processing audio files
+
+  if system("which ffmpeg > /dev/null 2>&1")
+    puts "✓ ffmpeg already installed"
+  else
+    if RUBY_PLATFORM.include?("darwin")
+      abort "Homebrew is required but not installed. Visit https://brew.sh" unless system("which brew > /dev/null 2>&1")
+
+      puts "Installing ffmpeg via Homebrew..."
+      system! "brew install ffmpeg"
+    else
+      abort "ffmpeg not found. Please install it manually for your OS."
+    end
+  end
 
   puts "== Installing dependencies =="
   system("bundle check") || system!("bundle install")

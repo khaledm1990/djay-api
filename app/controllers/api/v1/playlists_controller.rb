@@ -15,11 +15,12 @@ class Api::V1::PlaylistsController < ApiController
         .includes(
           tracks: [
             :artist,
-            { art_work_attachment: :blob },  # <-- track artwork
-            { audio_file_attachment: :blob }  # <-- track audio file
+            { art_work_attachment: :blob },
+            { audio_file_attachment: :blob }
           ],
-          art_work_attachment: :blob        # <-- playlist artwork (keep if you need it)
+          art_work_attachment: :blob
         )
         .select(:id, :name)
+        .order(:name)
   end
 end
