@@ -54,7 +54,7 @@ track_rows = []
 artists.each do |artist|
   rand(3..6).times do
     track_rows << {
-      name: "#{track_titles.sample} #{rand(1000)}",
+      title: "#{track_titles.sample} #{rand(1000)}",
       artist_id: artist.id,
       created_at: now,
       updated_at: now
