@@ -7,7 +7,7 @@ class Api::V1::PlaylistPresenter < Api::BasePresenter
     {
       id: playlist.id,
       name: playlist.name,
-      cover_url: "/images/playlists/combined.jpg",
+      art_work_url: playlist.art_work_url,
       total_count_text: "125 Songs",
       total_duration_text: "5.5 hours",
       tracks: tracks_response

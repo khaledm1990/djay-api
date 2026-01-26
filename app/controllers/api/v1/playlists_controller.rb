@@ -10,6 +10,15 @@ class Api::V1::PlaylistsController < ApiController
   attr_reader :playlists
 
   def set_playlists
-    @playlists = Playlist.includes(tracks: :artist).select(:id, :name)
+    @playlists =
+      Playlist
+        .includes(
+          tracks: [
+            :artist,
+            { art_work_attachment: :blob }  # <-- track artwork
+          ],
+          art_work_attachment: :blob        # <-- playlist artwork (keep if you need it)
+        )
+        .select(:id, :name)
   end
 end

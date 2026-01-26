@@ -8,7 +8,7 @@ class Api::V1::TrackPresenter < Api::BasePresenter
       id: track.id,
       title: track.title,
       artist_name: track.artist.name,
-      cover_url: track.cover_url,
+      art_work_url: track.art_work_url,
       duration: track.duration
     }
   end
