@@ -1,6 +1,6 @@
 class Avo::Resources::Track < Avo::BaseResource
   self.title = :title
-  self.includes = [ :artist, :playlist_tracks, :playlists, :active_storage_blobs, :active_storage_attachments ]
+  self.includes = [ :artist, :playlist_tracks, :playlists ]
   self.attachments = [ :art_work, :audio_file ]
   self.search = {
     query: -> { query.ransack(id_eq: q, title_cont: q, m: "or").result(distinct: false) }

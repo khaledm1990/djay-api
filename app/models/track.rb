@@ -1,10 +1,13 @@
 class Track < ApplicationRecord
-  belongs_to :artist
+  belongs_to :artist, required: true
   has_many :playlist_tracks, dependent: :destroy
   has_many :playlists, through: :playlist_tracks
 
   has_one_attached :art_work
   has_one_attached :audio_file
+
+  validates :title, presence: true
+  validates :art_work, presence: true
 
   def self.ransackable_attributes(auth_object = nil)
     [ "title" ]

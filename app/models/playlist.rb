@@ -4,6 +4,9 @@ class Playlist < ApplicationRecord
 
   has_one_attached :art_work
 
+  validates :name, presence: true
+  validates :art_work, presence: true
+
   def self.ransackable_attributes(auth_object = nil)
     [ "name" ]
   end
