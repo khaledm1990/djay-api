@@ -39,7 +39,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_26_085059) do
   create_table "tracks", force: :cascade do |t|
     t.bigint "artist_id", null: false
     t.datetime "created_at", null: false
-    t.string "name", null: false
+    t.string "title", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_tracks_on_artist_id"
   end
