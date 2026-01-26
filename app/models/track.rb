@@ -4,6 +4,7 @@ class Track < ApplicationRecord
   has_many :playlists, through: :playlist_tracks
 
   has_one_attached :art_work
+  has_one_attached :audio_file
 
   def self.ransackable_attributes(auth_object = nil)
     [ "title" ]

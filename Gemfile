@@ -62,4 +62,4 @@ end
 
 gem "rack-cors"
 gem "avo", ">= 3.2" # Admin panel for Rails apps [https://avo.app]
-gem "ransack"
+gem "ransack" # need to enable search in the AVO admin panel
