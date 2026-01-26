@@ -14,4 +14,8 @@ class Playlist < ApplicationRecord
       art_work
     )
   end
+
+  def total_duration
+    tracks.inject(0.0) { |sum, track| sum + track.duration }
+  end
 end

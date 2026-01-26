@@ -18,6 +18,7 @@ class Track < ApplicationRecord
   end
 
   def duration
-    "02:17"
+    return 0.0 unless audio_file.present?
+    audio_file.blob.metadata[:duration]
   end
 end

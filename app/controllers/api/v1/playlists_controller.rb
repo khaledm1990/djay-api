@@ -15,7 +15,8 @@ class Api::V1::PlaylistsController < ApiController
         .includes(
           tracks: [
             :artist,
-            { art_work_attachment: :blob }  # <-- track artwork
+            { art_work_attachment: :blob },  # <-- track artwork
+            { audio_file_attachment: :blob }  # <-- track audio file
           ],
           art_work_attachment: :blob        # <-- playlist artwork (keep if you need it)
         )
