@@ -5,9 +5,7 @@ class Api::V1::Playlists::ResponsePresenter < Api::BasePresenter
 
   def response
     {
-      playlists: playlists_response,
-      total_count_text: "125 Songs",
-      total_duration_text: "5.5 hours"
+      playlists: playlists_response
     }
   end
 
