@@ -14,16 +14,18 @@ now = Time.current
 # -----------------------------
 # Seed media helpers
 # -----------------------------
-IMAGES_DIR = Rails.root.join("db", "data", "images")
+PLAYLIST_IMAGES_DIR = Rails.root.join("db", "data", "images", "playlist")
+TRACK_IMAGES_DIR = Rails.root.join("db", "data", "images", "track")
 AUDIOS_DIR = Rails.root.join("db", "data", "audios")
 
-image_paths = Dir.glob(IMAGES_DIR.join("**", "*")).select { |p| File.file?(p) }
+playlist_image_paths = Dir.glob(PLAYLIST_IMAGES_DIR.join("**", "*")).select { |p| File.file?(p) }
+track_image_paths = Dir.glob(TRACK_IMAGES_DIR.join("**", "*")).select { |p| File.file?(p) }
 audio_paths = Dir.glob(AUDIOS_DIR.join("**", "*")).select { |p| File.file?(p) }
 
-if image_paths.empty?
-  puts "⚠️  No images found under #{IMAGES_DIR}"
+if playlist_image_paths.empty?
+  puts "⚠️  No images found under #{PLAYLIST_IMAGES_DIR}"
 else
-  puts "🖼️  Found #{image_paths.size} image(s)"
+  puts "🖼️  Found #{playlist_image_paths.size} image(s)"
 end
 
 if audio_paths.empty?
@@ -91,8 +93,8 @@ tracks = Track.order(:id).to_a
 
 # Attach track media (art_work + audio_file)
 tracks.each_with_index do |track, idx|
-  if image_paths.any?
-    attach_file!(track, :art_work, image_paths[idx % image_paths.size])
+  if track_image_paths.any?
+    attach_file!(track, :art_work, track_image_paths[idx % track_image_paths.size])
   end
 
   if audio_paths.any?
@@ -127,8 +129,8 @@ playlists = Playlist.order(:id).to_a
 
 # Attach playlist art_work
 playlists.each_with_index do |playlist, idx|
-  if image_paths.any?
-    attach_file!(playlist, :art_work, image_paths.reverse[idx % image_paths.size])
+  if playlist_image_paths.any?
+    attach_file!(playlist, :art_work, playlist_image_paths.reverse[idx % playlist_image_paths.size])
   end
 end
 

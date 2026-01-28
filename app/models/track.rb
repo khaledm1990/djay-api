@@ -20,6 +20,13 @@ class Track < ApplicationRecord
     )
   end
 
+  def audio_url
+    return nil unless audio_file.present?
+    Rails.application.routes.url_helpers.rails_blob_url(
+      audio_file
+    )
+  end
+
   def duration
     return 0.0 unless audio_file.present?
     audio_file.blob.metadata[:duration]

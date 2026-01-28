@@ -9,6 +9,7 @@ class Api::V1::TrackPresenter < Api::BasePresenter
       title: track.title,
       artist_name: track.artist.name,
       art_work_url: track.art_work_url,
+      audio_url: track.audio_url,
       duration: formatted_duration
     }
   end
