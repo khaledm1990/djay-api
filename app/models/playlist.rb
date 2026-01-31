@@ -7,6 +7,19 @@ class Playlist < ApplicationRecord
   validates :name, presence: true
   validates :art_work, presence: true
 
+  scope :with_tracks_and_artists, -> {
+    includes(
+      tracks: [
+        :artist,
+        { art_work_attachment: :blob },
+        { audio_file_attachment: :blob }
+      ],
+      art_work_attachment: :blob
+    )
+    .select(:id, :name)
+    .order(:name)
+  }
+
   def self.ransackable_attributes(auth_object = nil)
     [ "name" ]
   end
