@@ -3,6 +3,9 @@
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs. Don't rely on the data there!
 
+Rails.application.routes.default_url_options[:host] = "localhost"
+Rails.application.routes.default_url_options[:port] = 3000
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -30,6 +33,12 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
+  config.after_initialize do
+    ActiveStorage::Current.url_options = {
+      host: "localhost",
+      port: 3000
+    }
+  end
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
