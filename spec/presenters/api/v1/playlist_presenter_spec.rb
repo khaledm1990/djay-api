@@ -26,7 +26,7 @@ RSpec.describe Api::V1::PlaylistPresenter do
     record = Playlist.new(name: "Studio Sessions")
     attach_image(record, attachment_name: :art_work, filename: "playlist.png")
     record.save!
-    record.tracks << [track_one, track_two]
+    record.tracks << [ track_one, track_two ]
     allow(record).to receive(:art_work_url).and_return("https://example.com/playlist.png")
     record
   end

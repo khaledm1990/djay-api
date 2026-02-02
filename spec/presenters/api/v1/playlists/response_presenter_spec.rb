@@ -29,7 +29,7 @@ RSpec.describe Api::V1::Playlists::ResponsePresenter do
     record = Playlist.new(name: "Studio Sessions")
     attach_image(record, attachment_name: :art_work, filename: "playlist-one.png")
     record.save!
-    record.tracks << [first_track, second_track]
+    record.tracks << [ first_track, second_track ]
     allow(record).to receive(:art_work_url).and_return("https://example.com/playlist-one.png")
     record
   end
@@ -38,12 +38,12 @@ RSpec.describe Api::V1::Playlists::ResponsePresenter do
     record = Playlist.new(name: "Late Night")
     attach_image(record, attachment_name: :art_work, filename: "playlist-two.png")
     record.save!
-    record.tracks << [first_track]
+    record.tracks << [ first_track ]
     allow(record).to receive(:art_work_url).and_return("https://example.com/playlist-two.png")
     record
   end
 
-  let(:playlists) { [first_playlist, second_playlist] }
+  let(:playlists) { [ first_playlist, second_playlist ] }
 
   it "returns a serialized playlists payload" do
     expect(response).to eq(
