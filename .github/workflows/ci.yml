@@ -27,6 +27,12 @@ jobs:
   run_rspec_tests:
     runs-on: ubuntu-latest
 
+    env:
+      RAILS_ENV: test
+      PGHOST: localhost
+      PGPORT: 5432
+      PGUSER: postgres
+      PGPASSWORD: postgres
     services:
       postgres:
         image: postgres:16
