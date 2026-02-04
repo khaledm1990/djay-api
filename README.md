@@ -124,6 +124,12 @@ bin/rails db:reset
 bundle exec rspec
 ```
 
+## Local CI
+
+```bash
+bin/ci
+```
+
 ## Media storage
 
 Active Storage is configured for local disk in development/test (see `config/storage.yml`).
