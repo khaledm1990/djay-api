@@ -1,5 +1,5 @@
 class Artist < ApplicationRecord
-  has_many :tracks, dependent: :destroy
+  has_many :tracks, dependent: :destroy, inverse_of: :artist
 
   validates :name, presence: true
 
