@@ -133,3 +133,4 @@ bin/ci
 ## Media storage
 
 Active Storage is configured for local disk in development/test (see `config/storage.yml`).
+
